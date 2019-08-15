@@ -13,5 +13,7 @@ public interface PessoaDao<T, ID extends Serializable> extends JpaRepository<Pes
 	Pessoa save(Pessoa pessoa);
 	
 	@Query(value= "Select * from pessoa p where p.dni = :identificador", nativeQuery= true)
-	Pessoa Dni(@Param("identificador") String dni);
+	Pessoa dni(@Param("identificador") String dni);
+	
+	boolean existsById(String dni);
 }

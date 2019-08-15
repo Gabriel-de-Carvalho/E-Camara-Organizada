@@ -6,30 +6,39 @@ import javax.persistence.Id;
 @Entity
 public class Pessoa {
 	
-	private String nome;
+	protected String nome;
 	@Id
-	private	String dni;
-	private String estado;
-	private String[] interesses;
-	private String partido;
+	protected	String dni;
+	protected String estado;
+	protected String[] interesses;
+	protected String partido;
 	
 	public Pessoa() {
 		
 	}
 	
-	public Pessoa(String nome, String dni, String estado, String[] interesses) {
+	public Pessoa(String nome, String dni, String estado, String interesses) {
 		this.nome = nome;
 		this.dni = dni;
 		this.estado = estado;
-		this.interesses = interesses;
+		this.interesses = interesses.split(",");
 	}
 	
-	public Pessoa(String nome, String dni, String estado, String[] interesses, String partido) {
+	public Pessoa(String nome, String dni, String estado, String interesses, String partido) {
 		this.nome = nome;
 		this.dni = dni;
 		this.estado = estado;
-		this.interesses = interesses;
+		this.interesses = interesses.split(",");
 		this.partido = partido;
+	}
+	
+	
+	public String toString() {
+		if(partido == null) {
+			return (nome + " - " + dni + " " + estado + " - " + interesses.toString());
+		} else {
+			return (nome + " - " + dni + " " + estado + " - " + partido + " - " + interesses.toString());
+		}
 	}
 	
 }
