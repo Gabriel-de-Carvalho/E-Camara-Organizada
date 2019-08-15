@@ -33,6 +33,33 @@ public class Pessoa {
 	}
 	
 	
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getDni() {
+		return dni;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+
+	public String[] getInteresses() {
+		return interesses;
+	}
+
+
+	public String getPartido() {
+		return partido;
+	}
+
+
 	public String toString() {
 		if(partido == null) {
 			return (nome + " - " + dni + " " + estado + " - " + interesses.toString());
