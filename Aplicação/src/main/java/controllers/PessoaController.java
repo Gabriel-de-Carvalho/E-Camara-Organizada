@@ -1,6 +1,7 @@
 package controllers;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -32,8 +33,14 @@ public class PessoaController {
 		return pessoaService.cadastrarPessoa(pessoa.getNome(), pessoa.getDni(), pessoa.getEstado(), pessoa.getInteresses().toString());
 	}
 	
-	@PutMapping("/{dni}/{data}")
+	@PutMapping("cadastrarDeputado/{dni}/{data}")
 	public ResponseEntity<Deputado> cadastrarDeputado(@PathVariable String dni, @PathVariable String dataInicio){
 		return pessoaService.cadastrarDeputado(dni, dataInicio);
 	}
+	
+	@GetMapping("/{dni}")
+	public ResponseEntity<String> recuperarPessoa(@PathVariable String dni){
+		return pessoaService.exibirPessoa(dni);
+	}
+	
 }

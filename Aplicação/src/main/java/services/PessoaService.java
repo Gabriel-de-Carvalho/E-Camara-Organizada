@@ -51,6 +51,10 @@ public class PessoaService {
 
 
 	public ResponseEntity<String> exibirPessoa(String dni){
+		if(!(util.verificaDni(dni)) || !(pessoaDao.existsById(dni))) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+		}
+		
 		Pessoa pessoa = pessoaDao.dni(dni);
 		return new ResponseEntity<String>(pessoa.toString(), HttpStatus.FOUND);
 	}
