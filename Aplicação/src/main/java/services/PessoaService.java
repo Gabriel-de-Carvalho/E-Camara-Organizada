@@ -76,4 +76,18 @@ public class PessoaService {
 		
 	}
 	
+	public boolean ehDeputado(String[] deputados) {
+		boolean politico = true;
+		for(int i = 0; i < deputados.length; i++) {
+			if(!(util.verificaDni(deputados[i]))) {
+				 politico = false;
+			} else if(!(pessoaDao.existsById(deputados[i]))){
+				politico =  false;
+			} else if(!(pessoaDao.dni(deputados[i]) instanceof Deputado)) {
+				 politico = false;
+			}
+		}
+		return politico;
+	}
+	
 }
