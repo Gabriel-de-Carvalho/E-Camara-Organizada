@@ -1,4 +1,4 @@
-package models;
+package com.camara.demo.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

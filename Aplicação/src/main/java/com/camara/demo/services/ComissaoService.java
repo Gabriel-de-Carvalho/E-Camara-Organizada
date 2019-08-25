@@ -1,4 +1,4 @@
-package services;
+package com.camara.demo.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -6,15 +6,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import models.Comissao;
-import models.Deputado;
-import dao.ComissaoDao;
+import com.camara.demo.dao.ComissaoDao;
+import com.camara.demo.models.Comissao;
+
+
 
 @Service
 public class ComissaoService {
 		private final ComissaoDao comissaoDao;
 		private final PessoaService pessoaService;
 		
+		@Autowired
 		public ComissaoService(ComissaoDao comissaoDao, PessoaService pessoaService) {
 			this.comissaoDao = comissaoDao;
 			this.pessoaService = pessoaService;

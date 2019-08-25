@@ -1,5 +1,10 @@
-package models;
+package com.camara.demo.models;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Deputado")
 public class Deputado extends Pessoa{
 	
 	String dataInicio;

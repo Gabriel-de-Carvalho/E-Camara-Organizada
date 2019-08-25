@@ -1,4 +1,4 @@
-package controllers;
+package com.camara.demo.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import services.PartidoService;
+import com.camara.demo.services.PartidoService;
 
 @RestController
 @RequestMapping("/v1/partido")

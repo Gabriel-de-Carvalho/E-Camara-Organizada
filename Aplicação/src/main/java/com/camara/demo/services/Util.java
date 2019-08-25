@@ -1,4 +1,4 @@
-package services;
+package com.camara.demo.services;
 
 public class Util {
 	
@@ -8,6 +8,9 @@ public class Util {
 	
 	public boolean verificaDni(String dni) {
 		// TODO Auto-generated method stub
+		if(dni.length() != 11) {
+			return false;
+		}
 		for(int i = 0; i < dni.length(); i++) {
 			if((dni.charAt(i) != '0' && dni.charAt(i) != '1'
 					&& dni.charAt(i) != '2' && dni.charAt(i) != '3'
@@ -27,7 +30,7 @@ public class Util {
 					&& data.charAt(i) != '2' && data.charAt(i) != '3'
 					&& data.charAt(i) != '4' && data.charAt(i) != '5'
 					&& data.charAt(i) != '6' && data.charAt(i) != '7'
-					&& data.charAt(i) != '8' && data.charAt(i) != '9')) {
+					&& data.charAt(i) != '8' && data.charAt(i) != '9') && data.charAt(i) != '/') {
 				return false;
 			}
 		}

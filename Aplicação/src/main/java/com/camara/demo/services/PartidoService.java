@@ -1,21 +1,23 @@
-package services;
+package com.camara.demo.services;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import dao.PartidosDao;
-import models.Partido;
+import com.camara.demo.dao.PartidosDao;
+import com.camara.demo.models.Partido;
 
 @Service
 public class PartidoService {
 	
 	private final PartidosDao partidoDao;
 	
+	@Autowired
 	public PartidoService(PartidosDao partidoDao) {
 		this.partidoDao = partidoDao;
 	}

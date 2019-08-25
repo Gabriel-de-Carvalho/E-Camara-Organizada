@@ -1,5 +1,8 @@
-package models;
+package com.camara.demo.models;
 
+import javax.persistence.Entity;
+
+@Entity
 public class LeiComplementar extends Projeto{
 
 	private String artigos;
@@ -11,5 +14,9 @@ public class LeiComplementar extends Projeto{
 	
 	public String getArtigos() {
 		return artigos;
+	}
+	
+	public String toString() {
+		return (sequencia + "/" + ano);
 	}
 }

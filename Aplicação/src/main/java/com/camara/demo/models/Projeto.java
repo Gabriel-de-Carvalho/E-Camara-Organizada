@@ -1,24 +1,27 @@
-package models;
+package com.camara.demo.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Projeto {
 	
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	private int sequencia;
+	protected long sequencia;
 	
-	@Column private String autor;
-	@Column private int ano;
-	@Column private String codigo;
-	@Column private String ementa;
-	@Column private String interesses;
-	@Column private String situacao;
-	@Column private String endereco;
+	@Column protected String autor;
+	@Column protected int ano;
+	@Column protected String codigo;
+	@Column protected String ementa;
+	@Column protected String interesses;
+	@Column protected String situacao;
+	@Column protected String endereco;
 	
 	public Projeto() {
 		

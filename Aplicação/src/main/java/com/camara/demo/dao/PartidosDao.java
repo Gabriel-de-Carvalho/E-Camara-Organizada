@@ -1,13 +1,14 @@
-package dao;
+package com.camara.demo.dao;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import models.Partido;
+import com.camara.demo.models.Partido;
+
+
 
 public interface PartidosDao<T, ID extends Serializable> extends JpaRepository<Partido, String> {
 	

@@ -1,5 +1,8 @@
-package models;
+package com.camara.demo.models;
 
+import javax.persistence.Entity;
+
+@Entity
 public class ProjetoLei extends Projeto{
 	private boolean status;
 	
@@ -10,5 +13,9 @@ public class ProjetoLei extends Projeto{
 	
 	public boolean getStatus() {
 		return status;
+	}
+	
+	public String toString() {
+		return (sequencia + "/" + ano);
 	}
 }
