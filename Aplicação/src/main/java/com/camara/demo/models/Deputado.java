@@ -1,10 +1,11 @@
 package com.camara.demo.models;
 
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Deputado")
+@Table(name = "deputado")
 public class Deputado extends Pessoa{
 	
 	String dataInicio;
@@ -18,6 +19,10 @@ public class Deputado extends Pessoa{
 		super(nome, dni, estado, interesses, partido);
 		this.dataInicio = dataInicio;
 		
+	}
+	
+	public String getData() {
+		return dataInicio;
 	}
 	
 	@Override

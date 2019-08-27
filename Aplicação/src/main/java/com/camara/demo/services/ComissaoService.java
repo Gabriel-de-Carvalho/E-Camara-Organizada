@@ -22,19 +22,19 @@ public class ComissaoService {
 			this.pessoaService = pessoaService;
 		}
 		
-		public ResponseEntity<Comissao> cadastrarComissao(Comissao comissao){
-			String tema = comissao.getTema();
+		public Comissao cadastrarComissao(Comissao comissao){
+			String tema = comissao.getId();
 			String[] deputados = comissao.getListaDeputados();
 			
 			if(tema == null || tema.isEmpty()) {
-				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "tema da comissão vazio");
+				return null;
 			}
-			if(comissaoDao.existsById(tema) || pessoaService.ehDeputado(deputados)) {
-				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Tema ja existente ou dnis invalidos");
+			if(comissaoDao.existsById(tema) || !(pessoaService.ehDeputado(deputados))) {
+				return null;
 			}
 			
 			comissaoDao.save(comissao);
-			return new ResponseEntity<Comissao>(comissao, HttpStatus.CREATED);
+			return comissao;
 		}
 		
 }

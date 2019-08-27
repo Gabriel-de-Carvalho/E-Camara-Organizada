@@ -20,7 +20,7 @@ import com.camara.demo.services.PessoaService;
 
 
 @RestController
-@RequestMapping("/v1/pessoas")
+@RequestMapping("/v1")
 public class PessoaController {
 	
 	private PessoaService pessoaService;
@@ -30,26 +30,34 @@ public class PessoaController {
 		this.pessoaService = service;
 	}
 	
-	@PostMapping("/cadastrarComPartido")
+	@PostMapping("pessoa/ComPartido")
 	public ResponseEntity<Pessoa> cadastrarComPartido(@RequestBody Pessoa pessoa){
-		return pessoaService.cadastrarPessoa(pessoa.getNome(), pessoa.getDni(), pessoa.getEstado(), pessoa.getListaInteresses(), pessoa.getPartido());
+		Pessoa Newpessoa = pessoaService.cadastrarPessoa(pessoa.getNome(), pessoa.getDni(), pessoa.getEstado(), pessoa.getListaInteresses(), pessoa.getPartido());
+		return new ResponseEntity<Pessoa>(Newpessoa, HttpStatus.CREATED);
 	}
 	
-	@PostMapping("/cadastrarSemPartido")
+	@PostMapping("pessoa/SemPartido")
 	public ResponseEntity<Pessoa> cadastrarSemPartido(@RequestBody Pessoa pessoa){
 		Pessoa retorno = pessoaService.cadastrarPessoa(pessoa.getNome(), pessoa.getDni(), pessoa.getEstado(), pessoa.getListaInteresses());
 		return new ResponseEntity<Pessoa>(retorno, HttpStatus.CREATED);
 	}
 	
-	@PutMapping("cadastrarDeputado/")
+	@PutMapping("/deputado")
 	public ResponseEntity<Deputado> cadastrarDeputado(@RequestBody Map<String, String> body){
-		return pessoaService.cadastrarDeputado(body.get("dni"), body.get("data"));
+		Deputado deputado = pessoaService.cadastrarDeputado(body.get("dni"), body.get("data"));
+		return new ResponseEntity<Deputado>(deputado, HttpStatus.CREATED);
 	}
 	
-	@GetMapping("/{dni}")
+	@GetMapping("/pessoa/{dni}")
 	public ResponseEntity<String> recuperarPessoa(@PathVariable String dni){
 		Pessoa pessoa = pessoaService.exibirPessoa(dni);
 		return new ResponseEntity<String>(pessoa.toString(), HttpStatus.FOUND);
+	}
+	
+	@GetMapping("/deputado/{dni}")
+	public ResponseEntity<String> recuperarDeputado(@PathVariable String dni){
+		Deputado deputado = pessoaService.exibirDeputado(dni);
+		return new ResponseEntity<String>(deputado.toString(), HttpStatus.FOUND);
 	}
 	
 }

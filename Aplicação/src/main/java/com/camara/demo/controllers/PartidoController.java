@@ -1,11 +1,14 @@
 package com.camara.demo.controllers;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.camara.demo.models.Partido;
 import com.camara.demo.services.PartidoService;
 
 @RestController
@@ -18,13 +21,14 @@ public class PartidoController {
 		this.partidoService = partidoService;
 	}
 	
-	@PostMapping("/cadastrar")
-	public ResponseEntity cadastrarPartido(String nome) {
-		return partidoService.cadastraPartido(nome);
+	@PostMapping("/")
+	public ResponseEntity cadastrarPartido(@RequestBody String nome) {
+		Partido partido =  partidoService.cadastraPartido(nome);
+		return new ResponseEntity<Partido>(partido, HttpStatus.CREATED);
 	}
 	
-	@GetMapping("/listar")
+	@GetMapping("/")
 	public ResponseEntity listarBase() {
-		return partidoService.listaPartidos();
+		return new ResponseEntity<String>(partidoService.listaPartidos(), HttpStatus.FOUND);
 	}
 }

@@ -22,18 +22,18 @@ public class PartidoService {
 		this.partidoDao = partidoDao;
 	}
 	
-	public ResponseEntity cadastraPartido(String nome) {
-		if(nome.isEmpty() || nome == null) {
+	public Partido cadastraPartido(String nome) {
+		if(nome == null ||  nome.isEmpty() ) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "entrada invalida");
 		}
 		
 		Partido partido = new Partido(nome);
 		partidoDao.save(partido);
 		
-		return new ResponseEntity<Partido>(partido, HttpStatus.CREATED);
+		return partido;
 	}
 	
-	public ResponseEntity listaPartidos() {
+	public String listaPartidos() {
 		ArrayList<String> partidos = partidoDao.lista();
 		Collections.sort(partidos);
 		String retorno = "";
@@ -44,6 +44,6 @@ public class PartidoService {
 				retorno += partidos.get(i) + ",";
 			}
 		}
-		return new ResponseEntity<String>(retorno, HttpStatus.OK);
+		return retorno;
 	}
 }

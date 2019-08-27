@@ -1,18 +1,71 @@
 package com.camara.demo.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
-public class Ementa  extends Projeto{
+public class Ementa{
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	protected long id;
 	
-	private String artigos;
+	@NotNull @Size(min = 1) @Column protected String autor;
+	@NotNull @Size(min = 1) @Column protected int ano;
+	@Column protected String codigo;
+	@NotNull @Size(min = 1) @Column protected String ementa;
+	@NotNull @Size(min = 1) @Column protected String interesses;
+	@Column protected String situacao;
+	@NotNull @Size(min = 1) @Column protected String endereco;
+	@Column private boolean status;
+	
+	@Column @NotNull @Size(min = 1) private String artigos;
+	
+	public Ementa() {
+		
+	}
 	
 	public Ementa(String dni, int ano, String ementa, String interesses, String url, String artigos) {
-		super(dni, ano, ementa, interesses, url);
+		this.autor = dni;
+		this.ano = ano;
+		this.ementa = ementa;
+		this.interesses = interesses;
+		this.endereco = url;
 		this.artigos = artigos;
 	}
 	
+	public String getAutor() {
+		return autor;
+	}
+	
+	public int getAno() {
+		return ano;
+	}
+	
+	public String getEmenta() {
+		return ementa;
+	}
+	
+	public String[] getListaInteresses() {
+		return interesses.split(",");
+	}
+	
+	public String getInteresses() {
+		return interesses;
+	}
+	
+	public String getSituacao() {
+		return situacao;
+	}
+	
+	public String getEndereco() {
+		return endereco;
+	}
+	
 	public String toString() {
-		return (sequencia + "/" + ano);
+		return (id + "/" + ano);
 	}
 }

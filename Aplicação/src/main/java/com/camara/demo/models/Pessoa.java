@@ -1,5 +1,6 @@
 package com.camara.demo.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -8,14 +9,14 @@ import javax.persistence.Table;
 
 
 
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Entity
 @Table(name = "pessoa")
 public class Pessoa {
 	
 	protected String nome;
 	
-	@Id protected String dni;
+	@Id @Column(name="dni") protected String dni;
 	protected String estado;
 	protected String interesses;
 	protected String partido;
