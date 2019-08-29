@@ -14,13 +14,12 @@ public class LeiComplementar{
 	protected long id;
 	
 	@NotNull @Size(min = 1) @Column protected String autor;
-	@NotNull @Size(min = 1) @Column protected int ano;
+	@NotNull @Size(min = 1) @Column protected String ano;
 	@Column protected String codigo;
 	@NotNull @Size(min = 1) @Column protected String ementa;
 	@NotNull @Size(min = 1) @Column protected String interesses;
-	@Column protected String situacao;
+	@Column protected String situacao = "EM VOTACAO (CCJC)";
 	@NotNull @Size(min = 1) @Column protected String endereco;
-	@Column private boolean status;
 
 	@NotNull @Size(min = 1) private String artigos;
 	
@@ -28,20 +27,27 @@ public class LeiComplementar{
 		
 	}
 	
-	public LeiComplementar(String dni, int ano, String ementa, String interesses, String url, String artigos) {
+	public LeiComplementar(String dni, String ano, String ementa, String interesses, String url, String artigos) {
 		this.autor = dni;
 		this.ano = ano;
 		this.ementa = ementa;
 		this.interesses = interesses;
 		this.endereco = url;
 		this.artigos = artigos;
+		this.codigo = ano + "/" + ano;
+	}
+	
+
+	
+	public long getId() {
+		return id;
 	}
 	
 	public String getAutor() {
 		return autor;
 	}
 	
-	public int getAno() {
+	public String getAno() {
 		return ano;
 	}
 	
@@ -69,7 +75,11 @@ public class LeiComplementar{
 		return artigos;
 	}
 	
+	public String getCodigo() {
+		return id + "/" + ano;
+	}
+	
 	public String toString() {
-		return (id + "/" + ano);
+		return "Projeto de Lei Complementar - " + getCodigo() + " - " + autor + " - " + ementa + " - " + artigos + " - " + situacao;
 	}
 }

@@ -14,24 +14,28 @@ public class ProjetoLei{
 	protected long id;
 	
 	@NotNull @Size(min = 1) @Column protected String autor;
-	@NotNull @Size(min = 1) @Column protected int ano;
+	@NotNull @Size(min = 1) @Column protected String ano;
 	@Column protected String codigo;
 	@NotNull @Size(min = 1) @Column protected String ementa;
 	@NotNull @Size(min = 1) @Column protected String interesses;
-	@Column protected String situacao;
+	@Column protected String situacao = "EM VOTACAO (CCJC)";
 	@NotNull @Size(min = 1) @Column protected String endereco;
 	@Column private boolean status;
 	public ProjetoLei(){
 		
 	}
 	
-	public ProjetoLei(String dni, int ano, String ementa, String interesses, String url, boolean status) {
+	public ProjetoLei(String dni, String ano, String ementa, String interesses, String url, boolean status) {
 		this.autor = dni;
 		this.ano = ano;
 		this.ementa = ementa;
 		this.interesses = interesses;
 		this.endereco = url;
 		this.status = status;
+		codigo = id + "/" + ano;
+	}
+	public long getId() {
+		return id;
 	}
 	
 	public boolean getStatus() {
@@ -42,7 +46,7 @@ public class ProjetoLei{
 		return autor;
 	}
 	
-	public int getAno() {
+	public String getAno() {
 		return ano;
 	}
 	
@@ -66,7 +70,11 @@ public class ProjetoLei{
 		return endereco;
 	}
 	
+	public String getCodigo() {
+		return id + "/" + ano;
+	}
+	
 	public String toString() {
-		return (id + "/" + ano);
+		return "Projeto de Lei - " + getCodigo() + " - " + autor + " - " + ementa + " - " + status + " - " + situacao; 
 	}
 }

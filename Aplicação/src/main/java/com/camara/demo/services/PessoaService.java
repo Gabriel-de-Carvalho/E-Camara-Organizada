@@ -105,4 +105,12 @@ public class PessoaService {
 		return politico;
 	}
 	
+	public boolean ehDeputado(String deputado) {
+		if(deputadoDao.existsByDni(deputado)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 }
