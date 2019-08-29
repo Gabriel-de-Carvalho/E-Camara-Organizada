@@ -42,34 +42,34 @@ Recupera a base aliada.
 
 ### Comissão
 
-Metodo: @Post
-Rota: "/v1/Comissao/"
-Faz o cadastro de uma comissão especializada. É passado o nome do tema pelo qual a comissao é responsavel, alem de uma lita de dni's dos deputados participantes.
+Metodo: @Post  
+Rota: "/v1/Comissao/"  
+Faz o cadastro de uma comissão especializada. É passado o nome do tema pelo qual a comissao é responsavel, alem de uma lita de dni's dos deputados participantes.  
 
 
 ### Propostas de Leis
 
-Metodo: @Post
-Rota: "/v1/Ementa"
-Faz o cadastro de uma Ementa. Esta possuindo um autor, lista de interesses, ano, ementa, um endereço, e artigos.
+Metodo: @Post  
+Rota: "/v1/Ementa"  
+Faz o cadastro de uma Ementa. Esta possuindo um autor, lista de interesses, ano, ementa, um endereço, e artigos.  
 
-Metodo: @Post
-Rota: "/v1/LeiComplementar"
-Realiza o cadastro de uma Lei Complementar. Esta possuindo um autor, lista de interesses, ano, ementa, um endereço, e artigos.
+Metodo: @Post  
+Rota: "/v1/LeiComplementar"  
+Realiza o cadastro de uma Lei Complementar. Esta possuindo um autor, lista de interesses, ano, ementa, um endereço, e artigos.  
 
-Metodo: @Post
-Rota: "/v1/ProjetoLei"
-Realiza o cadastro de um Projeto de Lei. Esta possuindo um autor, lista de interesses, ano, ementa, um endereço, e um status se é conclusiva ou nao.
+Metodo: @Post  
+Rota: "/v1/ProjetoLei"  
+Realiza o cadastro de um Projeto de Lei. Esta possuindo um autor, lista de interesses, ano, ementa, um endereço, e um status se é conclusiva ou nao.  
 
-Metodo: @Get
-Rota:"/v1/Ementa/{Codigo}"
-Recupera uma Ementa e suas propriedades.
+Metodo: @Get  
+Rota:"/v1/Ementa/{Codigo}"  
+Recupera uma Ementa e suas propriedades.  
 
-Metodo: @Get
-Rota: "/v1/LeiComplementar/{Codigo}"
-Recupera uma LP e suas propriedades.
+Metodo: @Get  
+Rota: "/v1/LeiComplementar/{Codigo}"  
+Recupera uma LP e suas propriedades.  
 
-Metodo: @Get
-Rota: "/v1/ProjetoLei/{Codigo}"
-Recupera um Projeto de Lei e suas propriedades.
+Metodo: @Get  
+Rota: "/v1/ProjetoLei/{Codigo}"  
+Recupera um Projeto de Lei e suas propriedades.  
 
