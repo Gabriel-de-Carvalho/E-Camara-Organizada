@@ -18,10 +18,10 @@ Rota: "/v1/pessoa/SemPartido"
 Recebe uma Pessoa sem afiliação partidaria e a cadastra no sistema. Esta Pessoa possuindo um nome, um dni e estado, lista de interesses.
 
 Metodo: @put
-Rota: "/v1/Deputado"
+Rota: "/v1/Deputado" /n
 Realiza o cadastro de um deputado no sistema. Esse deputado deve ser uma pessoa previamente cadastrada no sistema e deve possuir afialiação partidaria. É necessario o Dni e data de inicio do mandato.
 
-Metodo: @Get
+Metodo: @Get /n
 Rota: "/v1/pessoa/{dni}"
 Recupera uma pessoa cadastrada no sistema atraves do seu identificador, um dni.
 
