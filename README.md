@@ -3,42 +3,42 @@
 
 Aplicação Backend desenvolvida utilizando-se da linguagem Java e do framework Spring Boot.
 
-Em resumo essa API é capaz de simular o processo lesgislativo brasileiro. Com Rotas e controllers definidos para o cadastro de pessoas e deputados, alem de comissões, partidos e propostas de leis.
+Em resumo essa API é capaz de simular o processo lesgislativo brasileiro. Com Rotas e controllers definidos para o cadastro de pessoas e deputados, alem de comissões, partidos e propostas de leis.  
 
 ## Rotas
 
 ### Pessoas e Deputados
 
-Metodo: @Post 
-Rota: "/v1/pessoa/ComPartido"
-Recebe uma Pessoa com afiliação partidaria e a cadastra no sistema. Esta Pessoa possuindo um nome, um dni, estado, lista de interesses e partido.
+Metodo: @Post  
+Rota: "/v1/pessoa/ComPartido"  
+Recebe uma Pessoa com afiliação partidaria e a cadastra no sistema. Esta Pessoa possuindo um nome, um dni, estado, lista de interesses e partido.  
 
-Metodo: @Post 
-Rota: "/v1/pessoa/SemPartido"
-Recebe uma Pessoa sem afiliação partidaria e a cadastra no sistema. Esta Pessoa possuindo um nome, um dni e estado, lista de interesses.
+Metodo: @Post  
+Rota: "/v1/pessoa/SemPartido"  
+Recebe uma Pessoa sem afiliação partidaria e a cadastra no sistema. Esta Pessoa possuindo um nome, um dni e estado, lista de interesses.  
 
-Metodo: @put
-Rota: "/v1/Deputado" /n
-Realiza o cadastro de um deputado no sistema. Esse deputado deve ser uma pessoa previamente cadastrada no sistema e deve possuir afialiação partidaria. É necessario o Dni e data de inicio do mandato.
+Metodo: @put  
+Rota: "/v1/Deputado"  
+Realiza o cadastro de um deputado no sistema. Esse deputado deve ser uma pessoa previamente cadastrada no sistema e deve possuir afialiação partidaria. É necessario o Dni e data de inicio do mandato.  
 
-Metodo: @Get /n
-Rota: "/v1/pessoa/{dni}"
-Recupera uma pessoa cadastrada no sistema atraves do seu identificador, um dni.
+Metodo: @Get    
+Rota: "/v1/pessoa/{dni}"  
+Recupera uma pessoa cadastrada no sistema atraves do seu identificador, um dni.  
 
 
-Metodo: @Get
-Rota: "/v1/deputado/{dni}"
-Recupera um deputado cadastrado no sistema atraves do seu identificador, um dni.
+Metodo: @Get  
+Rota: "/v1/deputado/{dni}"  
+Recupera um deputado cadastrado no sistema atraves do seu identificador, um dni.  
 
 ### Partidos
 
-Metodo: @Post
-Rota: "/v1/partido/"
-Faz o cadastro de um partido, Sendo este pertencendo a base aliada do governo. Passa-se o nome do partido.
+Metodo: @Post  
+Rota: "/v1/partido/"  
+Faz o cadastro de um partido, Sendo este pertencendo a base aliada do governo. Passa-se o nome do partido.  
 
-Metodo: @Get
-Rota: "/v1/partido/"
-Recupera a base aliada.
+Metodo: @Get  
+Rota: "/v1/partido/"  
+Recupera a base aliada.  
 
 ### Comissão
 
