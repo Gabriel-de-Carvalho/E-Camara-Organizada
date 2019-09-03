@@ -16,7 +16,7 @@ public interface ProjetoLeiDao<T, ID extends Serializable > extends JpaRepositor
 	boolean existsById(Long id);
 	
 	@Query(value = "FROM ProjetoLei where id = :id")
-	ProjetoLei find(@Param("id") String id);
+	ProjetoLei find(@Param("id") long id);
 	
 	ProjetoLei save(ProjetoLei lei);
 }

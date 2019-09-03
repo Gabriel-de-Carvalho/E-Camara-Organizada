@@ -1,6 +1,9 @@
 package com.camara.demo.models;
 
+import java.util.Map;
+
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +23,12 @@ public class LeiComplementar{
 	@NotNull @Size(min = 1) @Column protected String interesses;
 	@Column protected String situacao = "EM VOTACAO (CCJC)";
 	@NotNull @Size(min = 1) @Column protected String endereco;
-
+	
+    @ElementCollection
+	private Map<String, Boolean> votacoes;
+    
+    private String local = "CCJC";
+	
 	@NotNull @Size(min = 1) private String artigos;
 	
 	public LeiComplementar() {
@@ -81,5 +89,13 @@ public class LeiComplementar{
 	
 	public String toString() {
 		return "Projeto de Lei Complementar - " + getCodigo() + " - " + autor + " - " + ementa + " - " + artigos + " - " + situacao;
+	}
+	
+	public Map<String, Boolean> getVotacoes(){
+		return votacoes;
+	}
+	
+	public String getLocal() {
+		return local;
 	}
 }

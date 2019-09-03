@@ -59,12 +59,12 @@ public class ProjetosService {
 		}
 	
 	public String exibirLeiComplementar(String id) {
-		LeiComplementar lei = leiComplementarDao.find(id);
+		LeiComplementar lei = leiComplementarDao.find(Long.parseLong(id));
 		return lei.toString();
 	}
 	
 	public String exibirProjeto(String id) {
-		ProjetoLei sucess = projeto.find(id);
+		ProjetoLei sucess = projeto.find(Long.parseLong(id));
 		
 		return sucess.toString();
 	}

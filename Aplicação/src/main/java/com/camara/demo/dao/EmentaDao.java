@@ -13,7 +13,7 @@ import com.camara.demo.models.Ementa;
 public interface EmentaDao<T, ID extends Serializable> extends JpaRepository<Ementa, Long> {
 	Ementa save(Ementa ementa);
 	
-	boolean existsById(Long id);
+	boolean existsById(String id);
 	
 	@Query(value = "FROM Ementa where id = :id")
 	Ementa find(@Param("id") Long id);

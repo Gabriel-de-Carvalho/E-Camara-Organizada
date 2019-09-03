@@ -16,5 +16,5 @@ public interface LeiComplementarDao<T, ID extends Serializable> extends JpaRepos
 	boolean existsById(Long id);
 	
 	@Query(value = "FROM LeiComplementar where id = :id")
-	LeiComplementar find(@Param("id") String id);
+	LeiComplementar find(@Param("id") long id);
 }

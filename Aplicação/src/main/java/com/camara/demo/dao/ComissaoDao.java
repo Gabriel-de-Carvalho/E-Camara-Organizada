@@ -1,6 +1,7 @@
 package com.camara.demo.dao;
 
 import java.io.Serializable;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -13,4 +14,5 @@ public interface ComissaoDao<T, ID extends Serializable> extends JpaRepository<C
 		Comissao save(Comissao comissao);
 		
 		boolean existsById(String id);
+		Optional<Comissao> findById(String id);
 }

@@ -1,10 +1,14 @@
 package com.camara.demo.models;
 
+import java.util.Map;
+
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -20,6 +24,13 @@ public class ProjetoLei{
 	@NotNull @Size(min = 1) @Column protected String interesses;
 	@Column protected String situacao = "EM VOTACAO (CCJC)";
 	@NotNull @Size(min = 1) @Column protected String endereco;
+	
+    private String local = "CCJC";
+
+	
+	@ElementCollection
+	private Map<String, Boolean> votacoes;
+	
 	@Column private boolean status;
 	public ProjetoLei(){
 		
@@ -76,5 +87,13 @@ public class ProjetoLei{
 	
 	public String toString() {
 		return "Projeto de Lei - " + getCodigo() + " - " + autor + " - " + ementa + " - " + status + " - " + situacao; 
+	}
+	
+	public Map<String, Boolean> getVotacoes(){
+		return votacoes;
+	}
+	
+	public String getLocal() {
+		return local;
 	}
 }
