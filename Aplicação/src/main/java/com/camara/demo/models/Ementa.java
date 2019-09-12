@@ -28,7 +28,7 @@ public class Ementa{
     private String local = "CCJC";
 	
 	@ElementCollection
-	private Map<String, Boolean> votacoes;
+	private Map<String, String> votacoes;
 	
 	@Column @NotNull @Size(min = 1) private String artigos;
 	
@@ -90,8 +90,10 @@ public class Ementa{
 		return "Projeto de Emenda Constitucional - " + getCodigo() + " - " + autor + " - " + ementa + " - " + artigos + " - " + situacao; 
 	}
 	
-	public Map<String, Boolean> getVotacoes(){
-		return votacoes;
+	public String resultVotacao(String result, String local, String prox) {
+		votacoes.put(local, result);
+		this.situacao = "Em Votacao (" + prox + ")";
+		return (result + " (" + local + ")");
 	}
 	
 	public String getLocal() {

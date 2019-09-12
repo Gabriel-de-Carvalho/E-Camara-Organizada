@@ -25,7 +25,7 @@ public class LeiComplementar{
 	@NotNull @Size(min = 1) @Column protected String endereco;
 	
     @ElementCollection
-	private Map<String, Boolean> votacoes;
+	private Map<String, String> votacoes;
     
     private String local = "CCJC";
 	
@@ -91,9 +91,12 @@ public class LeiComplementar{
 		return "Projeto de Lei Complementar - " + getCodigo() + " - " + autor + " - " + ementa + " - " + artigos + " - " + situacao;
 	}
 	
-	public Map<String, Boolean> getVotacoes(){
-		return votacoes;
+	public String resultVotacao(String result, String local, String prox) {
+		votacoes.put(local, result);
+		this.situacao = "Em Votacao (" + prox + ")";
+		return (result + " (" + local + ")");
 	}
+	
 	
 	public String getLocal() {
 		return local;

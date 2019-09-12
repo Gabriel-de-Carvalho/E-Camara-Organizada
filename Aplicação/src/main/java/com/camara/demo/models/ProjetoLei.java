@@ -29,7 +29,7 @@ public class ProjetoLei{
 
 	
 	@ElementCollection
-	private Map<String, Boolean> votacoes;
+	private Map<String, String> votacoes;
 	
 	@Column private boolean status;
 	public ProjetoLei(){
@@ -89,8 +89,10 @@ public class ProjetoLei{
 		return "Projeto de Lei - " + getCodigo() + " - " + autor + " - " + ementa + " - " + status + " - " + situacao; 
 	}
 	
-	public Map<String, Boolean> getVotacoes(){
-		return votacoes;
+	public String resultVotacao(String result, String local, String prox) {
+		votacoes.put(local, result);
+		this.situacao = "Em Votacao (" + prox + ")";
+		return (result + " (" + local + ")");
 	}
 	
 	public String getLocal() {
