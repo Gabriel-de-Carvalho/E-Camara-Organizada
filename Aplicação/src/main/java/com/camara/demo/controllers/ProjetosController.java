@@ -24,7 +24,7 @@ import com.camara.demo.models.ProjetoLei;
 import com.camara.demo.services.ProjetosService;
 
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/v1/projetos")
 public class ProjetosController {
 	
 	ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
