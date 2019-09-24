@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
@@ -23,7 +22,7 @@ public class JWTTokenProvider {
 	    private static final String HEADER_STRING = "Authorization";
 	    
 	    @Autowired
-	    public static UserDetailsService  userService;
+	    public static CustomUserDetailsService  userService;
 	    
 	    public static String generateToken(String username) {
 	    	return TOKEN_PREFIX + (Jwts.builder().setSubject(username).setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
@@ -33,7 +32,7 @@ public class JWTTokenProvider {
 	    public boolean validateToken(String token) {
 	    	try {
 		    	Jws<Claims> claims = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token);
-		    	if(claims.getBody().getExpiration().before(new Date())) {
+		    	if(claims.getBody().getExpiration().before(new Date()) && claims.getBody().getSubject() == null) {
 		    		return false;
 		    	}
 		    	
@@ -56,7 +55,7 @@ public class JWTTokenProvider {
 	    	
 	    	if (token != null) {
 	    		UserDetails user = userService.loadUserByUsername(getUserNameFromToken(token));
-	    		return new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+	    		return new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
 	    	}
 	    	return null;
 	    }

@@ -18,7 +18,7 @@ import org.springframework.web.filter.GenericFilterBean;
 public class JWTAuthenticationFilter extends GenericFilterBean{
 	
 	@Autowired
-	public JWTTokenProvider jwtProvider;
+	public JWTTokenProvider jwtProvider = new JWTTokenProvider();
 	
 	public JWTAuthenticationFilter() {
 		
@@ -28,13 +28,12 @@ public class JWTAuthenticationFilter extends GenericFilterBean{
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		// TODO Auto-generated method stub
-		String token = null;
-		String username = null;
+		String token;
 		
 		String requestToken = ((HttpServletRequest) request).getHeader("Authorization");
-		if(requestToken != null && requestToken.startsWith("bearer ")) {
+		if(requestToken != null && requestToken.startsWith("Bearer ")) {
 			token = requestToken.substring(7);
-			if(jwtProvider.validateToken(token)) {
+			if(token != null && jwtProvider.validateToken(token)) {
 				Authentication auth = jwtProvider.getAuthentication(token);
 				SecurityContextHolder.getContext().setAuthentication(auth);
 			}

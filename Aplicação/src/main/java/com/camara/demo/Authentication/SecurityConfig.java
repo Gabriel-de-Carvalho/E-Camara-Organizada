@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -53,11 +54,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		
 		.authorizeRequests()
 		.antMatchers(HttpMethod.GET,"/v1/deputado/**").permitAll()
-		.antMatchers(HttpMethod.GET, "/v1/partido/**").permitAll()
+		.antMatchers(HttpMethod.GET, "/v1/partido/**").authenticated()
 		.antMatchers(HttpMethod.GET, "/v1/projetos/**").permitAll()
 		.antMatchers("/v1/auth/**").permitAll()
+		.antMatchers("/v1/pessoa/**").hasRole("ADMIN")
 		.anyRequest().authenticated();
 		
-//		httpSecurity.addFilterBefore(new JWTAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+		httpSecurity.addFilterBefore(new JWTAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
 }
