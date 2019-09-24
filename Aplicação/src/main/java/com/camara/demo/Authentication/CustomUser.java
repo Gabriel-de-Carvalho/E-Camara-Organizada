@@ -101,5 +101,7 @@ public class CustomUser implements UserDetails{
 		return this.cadastro;
 	}
 	
-	
+	public long getId() {
+		return this.id;
+	}
 }
