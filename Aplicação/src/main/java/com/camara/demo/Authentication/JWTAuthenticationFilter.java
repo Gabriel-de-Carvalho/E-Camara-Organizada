@@ -18,10 +18,10 @@ import org.springframework.web.filter.GenericFilterBean;
 public class JWTAuthenticationFilter extends GenericFilterBean{
 	
 	@Autowired
-	public JWTTokenProvider jwtProvider = new JWTTokenProvider();
+	public JWTTokenProvider jwtProvider;
 	
-	public JWTAuthenticationFilter() {
-		
+	public JWTAuthenticationFilter(JWTTokenProvider jwt) {
+		this.jwtProvider = jwt;
 	}
 
 	@Override

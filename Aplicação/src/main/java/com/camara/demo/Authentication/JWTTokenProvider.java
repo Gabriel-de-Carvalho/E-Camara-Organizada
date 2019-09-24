@@ -22,7 +22,7 @@ public class JWTTokenProvider {
 	    private static final String HEADER_STRING = "Authorization";
 	    
 	    @Autowired
-	    public static CustomUserDetailsService  userService;
+	    public CustomUserDetailsService  userService;
 	    
 	    public static String generateToken(String username) {
 	    	return TOKEN_PREFIX + (Jwts.builder().setSubject(username).setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
@@ -51,13 +51,10 @@ public class JWTTokenProvider {
 	    	return user;
 	    }
 	    
-	    public static Authentication getAuthentication(String token) {
-	    	
-	    	if (token != null) {
+	    public Authentication getAuthentication(String token) {
+	    	System.out.println(userService);
 	    		UserDetails user = userService.loadUserByUsername(getUserNameFromToken(token));
-	    		return new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
-	    	}
-	    	return null;
+	    		return new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword(), user.getAuthorities());
 	    }
 
 

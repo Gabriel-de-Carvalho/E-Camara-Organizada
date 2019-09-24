@@ -20,7 +20,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
 	private CustomUserDetailsService serviceUser;
-	  
+	@Autowired
+	private JWTAuthenticationFilter filter;
+	
 	 @Bean
      @Override
      protected AuthenticationManager authenticationManager() throws Exception {
@@ -60,6 +62,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.antMatchers("/v1/pessoa/**").hasRole("ADMIN")
 		.anyRequest().authenticated();
 		
-		httpSecurity.addFilterBefore(new JWTAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+		httpSecurity.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
 	}
 }

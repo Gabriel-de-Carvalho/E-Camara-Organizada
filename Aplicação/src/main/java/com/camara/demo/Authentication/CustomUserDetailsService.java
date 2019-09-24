@@ -2,27 +2,30 @@ package com.camara.demo.Authentication;
 
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.transaction.Transactional;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Component
+
+
+
+@Service
 public class CustomUserDetailsService implements UserDetailsService{
 	
-	@Autowired
 	private UserRepository users;
 	
-	public CustomUserDetailsService() {
-		super();
+	public CustomUserDetailsService(UserRepository users) {
+		this.users = users;
 	}
+
 	
 	@Override
 	public UserDetails loadUserByUsername(String username){
 		// TODO Auto-generated method stub
 		Optional<CustomUser> user = users.findByUsername(username);
-		return user.orElseThrow(() -> new NullPointerException("usuario nao existente"));
+		return user.orElseThrow(() -> new IllegalArgumentException("usuario nao existente"));
 	}
 
 }

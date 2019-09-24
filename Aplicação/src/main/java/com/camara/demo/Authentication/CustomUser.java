@@ -8,8 +8,10 @@ import java.util.stream.Collectors;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.transaction.Transactional;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -32,7 +34,7 @@ public class CustomUser implements UserDetails{
 	
 	private Date cadastro;
 	
-	@ElementCollection
+	@ElementCollection(fetch=FetchType.EAGER)
 	private List<String> roles = new ArrayList<>();
 	
 	public CustomUser() {

@@ -40,9 +40,9 @@ public class ComissaoController {
 			for(ConstraintViolation<Comissao> violacao : quebras) {
 				throw new ResponseStatusException(HttpStatus.BAD_GATEWAY, violacao.getMessage());
 		}
-		}
+	}
 		if(comissaoService.cadastrarComissao(comissao) == null) {
-			throw new ResponseStatusException(HttpStatus.BAD_GATEWAY, "deu ruim");
+			throw new ResponseStatusException(HttpStatus.BAD_GATEWAY);
 		}
 		return new ResponseEntity<Comissao>(comissaoService.cadastrarComissao(comissao), HttpStatus.CREATED);
 	}

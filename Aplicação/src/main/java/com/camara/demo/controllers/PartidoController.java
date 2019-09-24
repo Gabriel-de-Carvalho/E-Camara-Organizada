@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.camara.demo.models.Partido;
 import com.camara.demo.services.PartidoService;
@@ -24,6 +25,9 @@ public class PartidoController {
 	@PostMapping("/")
 	public ResponseEntity cadastrarPartido(@RequestBody String nome) {
 		Partido partido =  partidoService.cadastraPartido(nome);
+		if(partido == null) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "entrada invalida");
+		}
 		return new ResponseEntity<Partido>(partido, HttpStatus.CREATED);
 	}
 	

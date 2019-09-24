@@ -23,8 +23,8 @@ public class PartidoService {
 	}
 	
 	public Partido cadastraPartido(String nome) {
-		if(nome == null ||  nome.isEmpty() ) {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "entrada invalida");
+		if(nome == null ||  nome.isEmpty() || (nome.trim().length() == 0)) {
+			return null;
 		}
 		
 		Partido partido = new Partido(nome);
