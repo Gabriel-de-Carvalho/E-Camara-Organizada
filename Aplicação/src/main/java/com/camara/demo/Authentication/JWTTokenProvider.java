@@ -26,8 +26,8 @@ public class JWTTokenProvider {
 	    public static UserDetailsService  userService;
 	    
 	    public static String generateToken(String username) {
-	    	return Jwts.builder().setSubject(username).setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
-	    			.signWith(SignatureAlgorithm.HS512, SECRET).compact();
+	    	return TOKEN_PREFIX + (Jwts.builder().setSubject(username).setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+	    			.signWith(SignatureAlgorithm.HS512, SECRET).compact());
 	    }
 	    
 	    public boolean validateToken(String token) {

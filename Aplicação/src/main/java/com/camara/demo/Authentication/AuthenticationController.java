@@ -71,7 +71,7 @@ public class AuthenticationController {
 		Optional<CustomUser> userDb = userRepo.findByUsername(username);
 		CustomUser customUser = userDb.orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuario inexistente"));
 		
-		authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(customUser.getUsername(),  passwordEncoder.encode(user.getPassword())));
+		authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(customUser.getUsername(),  user.getPassword()));
 		String token = jwtProvider.generateToken(customUser.getUsername());
 		
 		Map<String,String> resposta = new HashMap<>();
