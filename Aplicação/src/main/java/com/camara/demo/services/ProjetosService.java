@@ -25,7 +25,7 @@ public class ProjetosService {
 	}
 	
 	public Ementa cadastrarEmenta(Ementa ementa) {
-		if(pessoas.ehDeputado(ementa.getAutor()) && !(ementaDao.existsById(ementa.getId()))) {
+		if(pessoas.ehDeputado(ementa.getAutor().getDni()) && !(ementaDao.existsById(ementa.getId()))) {
 			Ementa retorno = ementaDao.save(ementa);
 			return retorno;
 		} else {
@@ -35,7 +35,7 @@ public class ProjetosService {
 	}
 	
 	public LeiComplementar cadastrarLeiComplementar(LeiComplementar lei) {
-		if(pessoas.ehDeputado(lei.getAutor()) && !(leiComplementarDao.existsById(lei.getId()))) {
+		if(pessoas.ehDeputado(lei.getAutor().getDni()) && !(leiComplementarDao.existsById(lei.getId()))) {
 			LeiComplementar retorno = leiComplementarDao.save(lei);
 			return retorno;
 		} else {
@@ -45,7 +45,7 @@ public class ProjetosService {
 	}
 	
 	public ProjetoLei cadastrarProjetoLei(ProjetoLei lei) {
-		if(pessoas.ehDeputado(lei.getAutor()) && !(projeto.existsById(lei.getId()))) {
+		if(pessoas.ehDeputado(lei.getAutor().getDni()) && !(projeto.existsById(lei.getId()))) {
 			ProjetoLei retorno = projeto.save(lei);
 			return retorno;
 		} else {

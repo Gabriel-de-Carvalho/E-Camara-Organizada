@@ -113,4 +113,8 @@ public class PessoaService {
 		}
 	}
 	
+	public Deputado getDeputado(String dni) {
+		return this.deputadoDao.findByDni(dni);
+	}
+	
 }

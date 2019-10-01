@@ -53,13 +53,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	public void configure(HttpSecurity httpSecurity) throws Exception{
 		httpSecurity.csrf().disable()
-		
+		.cors().and()
 		.authorizeRequests()
 		.antMatchers(HttpMethod.GET,"/v1/deputado/**").permitAll()
 		.antMatchers(HttpMethod.GET, "/v1/partido/**").authenticated()
 		.antMatchers(HttpMethod.GET, "/v1/projetos/**").permitAll()
 		.antMatchers("/v1/auth/**").permitAll()
-		.antMatchers("/v1/pessoa/**").hasRole("ADMIN")
+		.antMatchers(HttpMethod.POST, "v1/**").hasRole("ADMIN")
 		.anyRequest().authenticated();
 		
 		httpSecurity.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);

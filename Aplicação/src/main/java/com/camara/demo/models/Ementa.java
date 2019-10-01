@@ -17,7 +17,7 @@ public class Ementa{
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	protected long id;
 	
-	@NotNull @Size(min = 1) @Column protected String autor;
+	@NotNull @Size(min = 1) @Column protected Deputado autor;
 	@NotNull @Size(min = 1) @Column protected String ano;
 	@Column protected String codigo;
 	@NotNull @Size(min = 1) @Column protected String ementa;
@@ -36,8 +36,8 @@ public class Ementa{
 		
 	}
 	
-	public Ementa(String dni, String ano, String ementa, String interesses, String url, String artigos) {
-		this.autor = dni;
+	public Ementa(Deputado autor, String ano, String ementa, String interesses, String url, String artigos) {
+		this.autor = autor;
 		this.ano = ano;
 		this.ementa = ementa;
 		this.interesses = interesses;
@@ -50,7 +50,7 @@ public class Ementa{
 		return id;
 	}
 	
-	public String getAutor() {
+	public Deputado getAutor() {
 		return autor;
 	}
 	

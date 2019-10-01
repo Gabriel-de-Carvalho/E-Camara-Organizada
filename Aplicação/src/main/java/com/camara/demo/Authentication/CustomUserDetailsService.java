@@ -25,7 +25,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username){
 		// TODO Auto-generated method stub
 		Optional<CustomUser> user = users.findByUsername(username);
-		return user.orElseThrow(() -> new IllegalArgumentException("usuario nao existente"));
+		return user.orElseThrow(() -> new NullPointerException("usuario nao inexistente"));
 	}
-
+	
 }

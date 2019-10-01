@@ -17,7 +17,7 @@ public class ProjetoLei{
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	protected long id;
 	
-	@NotNull @Size(min = 1) @Column protected String autor;
+	@NotNull @Size(min = 1) @Column protected Deputado autor;
 	@NotNull @Size(min = 1) @Column protected String ano;
 	@Column protected String codigo;
 	@NotNull @Size(min = 1) @Column protected String ementa;
@@ -36,8 +36,8 @@ public class ProjetoLei{
 		
 	}
 	
-	public ProjetoLei(String dni, String ano, String ementa, String interesses, String url, boolean status) {
-		this.autor = dni;
+	public ProjetoLei(Deputado autor, String ano, String ementa, String interesses, String url, boolean status) {
+		this.autor = autor;
 		this.ano = ano;
 		this.ementa = ementa;
 		this.interesses = interesses;
@@ -53,7 +53,7 @@ public class ProjetoLei{
 		return status;
 	}	
 	
-	public String getAutor() {
+	public Deputado getAutor() {
 		return autor;
 	}
 	

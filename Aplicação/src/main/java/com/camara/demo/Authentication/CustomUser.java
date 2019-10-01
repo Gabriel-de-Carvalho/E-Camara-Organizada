@@ -106,4 +106,8 @@ public class CustomUser implements UserDetails{
 	public long getId() {
 		return this.id;
 	}
+	
+	public String toString() {
+		return (" nome: " + this.username + "\n email: " + this.email + " \n data de cadastro: " + this.cadastro.toGMTString());
+	}
 }

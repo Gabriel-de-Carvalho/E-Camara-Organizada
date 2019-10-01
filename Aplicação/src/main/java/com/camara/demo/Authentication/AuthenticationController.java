@@ -17,10 +17,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,7 +61,7 @@ public class AuthenticationController {
 			CustomUser newUser = new CustomUser(user.getUsername(), passwordEncoder.encode(user.getPassword()), user.getEmail(), new Date(), Arrays.asList("ROLE_USER"));
 			CustomUser resposta = (CustomUser) userRepo.save(newUser);
 			
-			return new ResponseEntity<CustomUser>(resposta, HttpStatus.CREATED);
+			return new ResponseEntity<String>(resposta.toString(), HttpStatus.CREATED);
 	}
 	
 	@PostMapping("/signin")
@@ -80,8 +80,9 @@ public class AuthenticationController {
 		
 		return new ResponseEntity(resposta, HttpStatus.OK);
 		} catch(Exception e) {
-			throw new BadCredentialsException("Invalid username/password supplied");
+			throw new ResponseStatusException(HttpStatus.BAD_GATEWAY, "Usuario/Senha inválidos");
 		}
 	}
-
 }
+
+
