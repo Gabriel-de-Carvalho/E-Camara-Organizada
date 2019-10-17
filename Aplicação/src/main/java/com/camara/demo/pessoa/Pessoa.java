@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.camara.demo.partido.Partido;
@@ -22,7 +22,7 @@ public class Pessoa {
 	@Id @Column(name="dni") protected String dni;
 	protected String estado;
 	protected String interesses;
-	@OneToMany
+	@OneToOne
 	protected Partido partido;
 	
 	public Pessoa() {
