@@ -17,7 +17,7 @@ Primeiramente, Devemos clonar localmente esse repositorio para se poder executar
 Para isso, então, deve-se ter o git instalado na máquina, caso não o tenha siga esse tutorial para instalação usando sua plataforma como referência: [instalação do git](https://git-scm.com/book/pt-br/v1/Primeiros-passos-Instalando-Git.)  
 
 1. abra seu terminal.
-1. Clone o repositorio:&#x2011;`console  cuser@:$ Git Clone https://github.com/Gabriel-de-Carvalho/E-Camara-Organizada.git `
+1. Clone o repositorio:`console  cuser@:$ Git Clone https://github.com/Gabriel-de-Carvalho/E-Camara-Organizada.git `
 1. Navegue até a pasta Aplicação:
 ```console 
 user@:$ cd E-Camara-Organizada/Aplicação
