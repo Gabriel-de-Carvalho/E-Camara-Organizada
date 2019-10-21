@@ -17,21 +17,22 @@ Primeiramente, Devemos clonar localmente esse repositorio para se poder executar
 Para isso, então, deve-se ter o git instalado na máquina, caso não o tenha siga esse tutorial para instalação usando sua plataforma como referência: [instalação do git](https://git-scm.com/book/pt-br/v1/Primeiros-passos-Instalando-Git.)  
 
 1. abra seu terminal.
-1. Clone o repositorio: 
-   ..* ```console  
-   user@:$ Git Clone https://github.com/Gabriel-de-Carvalho/E-Camara-Organizada.git 
-   ```
+1. Clone o repositorio: $ Git Clone https://github.com/Gabriel-de-Carvalho/E-Camara-Organizada.git
+1. Navegue até a pasta Aplicação: $ cd E-Camara-Organizada/Aplicação
+1. Execute o comando para iniciar o programa: $ mvn spring-boot:run
 
-1. Navegue até a pasta Aplicação:
-```console 
-user@:$ cd E-Camara-Organizada/Aplicação
-```
-1. Execute o comando para iniciar o programa:
-```console 
-user@:$ mvn spring-boot:run
-```
 
 ## Arquitetura
+
+Baseada na arquitetura cliente-servidor de 3 camadas. nas quais:  
+* Servidor web: Responsavel por receber requisições feitas pelo cliente(Browser), envia-las para a camada de negócio onde será processada e retornar uma resposta adequada para o cliente.
+* Camada de negócio: Coleção de funções onde serão feitos os processamentos dos pedidos passados pela camada web.
+* Camada de dados: Repositório de dados, onde estão armazenadas todas as informações e é realizada a persistência das entidades pertencentes ao programa.  
+  
+  
+  
+![fluxo](https://i.ibb.co/qj04PfN/eco-1.jpg)
+
 
 ## Autenticação
 
