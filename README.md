@@ -50,5 +50,32 @@ Autenticação e fluxo de funcionamento:
     * retornará um erro caso as informações contidas no token não estejam de acordo com o que está salvo no sistema.
     * Tentar acessar uma rota que esteja fora de seus direitos de usuário.
 
-Em resumo do funcionamento, o filto aplicado irá retirar o token que está sendo passado, retirando as informações dele. Caso estejam de acordo com o que está salvo nas informações do usuário.
+Em resumo do funcionamento, o filtro aplicado irá retirar o token que está sendo passado, retirando as informações dele. Caso estejam de acordo com o que está salvo nas informações do usuário.
 Para mais detalhes: [Json Web Token](https://medium.com/tableless/entendendo-tokens-jwt-json-web-token-413c6d1397f6)
+
+## Desempenho
+ Um sistema de memoria auxiliar cache, está sendo implementado para evitar o constante acesso a informações em requisições repetidas que nao sofreram alterações.
+ 
+ 1. Ao realizar uma requisição pela primeira vez, essa é devolvida a resposta, e salva-se o objeto por um determinado tempo em uma memoria auxiliar.
+ 1. Caso seja feita novamente a requisição, é conferido caso o dado nao tenha sido invalidado.
+    * Caso nao, retorna-se imediatamente o dado armazenado no cache.
+    * Caso sim, é feita uma nova consulta e armazena-se assim novamente o dado. 
+&nbsp
+&nbsp
+&nbsp
+* . Gráfico de tempo de resposta pelo tempo entre uma rota com cache(Deputado/amarelo) e outra sem(Pessoa/azul)
+![comparação](https://uploaddeimagens.com.br/images/002/437/749/full/flotLatenciesOverTime.png?1571691521) 
+![tt](https://uploaddeimagens.com.br/images/002/437/750/full/flotResponseTimesPercentiles.png?1571691539)  
+ &nbsp
+ &nbsp
+ &nbsp
+* Tempo de respostas
+![tempo de respostas](https://uploaddeimagens.com.br/images/002/437/751/full/WhatsApp_Image_2019-10-21_at_17.45.23.jpeg?1571691552)  
+&nbsp
+&nbsp
+&nbsp
+* Taxa de vazão de dados de entrada(amarelo) e de saida(azul)
+![vazao](https://uploaddeimagens.com.br/images/002/437/748/full/flotBytesThroughputOverTime.png?1571691499)
+
+* 
+
