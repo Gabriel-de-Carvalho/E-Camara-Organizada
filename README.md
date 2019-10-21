@@ -3,11 +3,21 @@
 
 Aplicação Backend desenvolvida utilizando-se da linguagem Java e do framework Spring Boot.
 
-Em resumo essa API é capaz de simular o processo lesgislativo brasileiro. Com Rotas e controllers definidos para o cadastro de pessoas e deputados, alem de comissões, partidos e propostas de leis.  
+Em resumo essa API é capaz de simular o processo lesgislativo brasileiro. Com as possibilidades de:
+* Cadastrar e recuperar pessoas
+* Cadastrar e recuperar deputados a partir de pessoas existentes no sistema
+* Cadastrar e recuperar partidos
+* Cadastrar e recuperar projetos de lei, Ementa e leis complementares
+* Cadastrar e recuperar comissões
+* Realizar a simulação de votação para projetos em andamento.
+   
 
 ## Instalação e Execução
-Primeiramente, Devemos clonar localmente esse repositorio para se poder executar a API.   
+Primeiramente, Devemos clonar localmente esse repositorio para se poder executar a API.  
 Para isso, então, deve-se ter o git instalado na máquina, caso não o tenha siga esse tutorial para instalação usando sua plataforma como referência: [instalação do git](https://git-scm.com/book/pt-br/v1/Primeiros-passos-Instalando-Git.)  
+
+1. abra seu terminal.
+1. Clone o repositorio: ```console user@:$ Git Clone https://github.com/Gabriel-de-Carvalho/E-Camara-Organizada.git
 
 Após Isso, abra então seu terminal, navegue até o local onde se deseja salvar localmente esse projeto. Quando estiver pronto, utilize o comando:
 > $ Git Clone https://github.com/Gabriel-de-Carvalho/E-Camara-Organizada.git  
