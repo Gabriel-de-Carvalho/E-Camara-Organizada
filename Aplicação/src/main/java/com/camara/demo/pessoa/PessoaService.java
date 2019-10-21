@@ -3,6 +3,7 @@ package com.camara.demo.pessoa;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -38,7 +39,7 @@ public class PessoaService {
 		}
 	}
 
-	public Pessoa cadastrarPessoa(String nome, String dni, String estado, String interesses, Partido partido) {
+	public Pessoa cadastrarPessoa(String nome, String dni, String estado, String interesses, String partido) {
 		if((nome == null || nome.isEmpty()) || (dni == null) || (estado == null || estado.isEmpty())) {
 			throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, "Preencha todos os campos corretamente");
 		} else if (dni.isEmpty()  || !(util.verificaDni(dni))) {
@@ -110,7 +111,7 @@ public class PessoaService {
 			return false;
 		}
 	}
-	
+	@Cacheable("deputado")
 	public Deputado getDeputado(String dni) {
 		return this.deputadoDao.findByDni(dni);
 	}

@@ -22,15 +22,14 @@ public class Pessoa {
 	@Id @Column(name="dni") protected String dni;
 	protected String estado;
 	protected String interesses;
-	@OneToOne
-	protected Partido partido;
+	protected String partido;
 	
 	public Pessoa() {
 		
 	}
 	
 	
-	public Pessoa(String nome, String dni, String estado, String interesses, Partido partido) {
+	public Pessoa(String nome, String dni, String estado, String interesses, String partido) {
 		this.nome = nome;
 		this.dni = dni;
 		this.estado = estado;
@@ -72,7 +71,7 @@ public class Pessoa {
 	}
 
 
-	public Partido getPartido() {
+	public String getPartido() {
 		return partido;
 	}
 

@@ -47,13 +47,13 @@ public class PessoaController {
 	@GetMapping("/pessoa/{dni}")
 	public ResponseEntity<String> recuperarPessoa(@PathVariable String dni){
 		Pessoa pessoa = pessoaService.exibirPessoa(dni);
-		return new ResponseEntity<String>(pessoa.toString(), HttpStatus.FOUND);
+		return new ResponseEntity<String>(pessoa.toString(), HttpStatus.OK);
 	}
 	
 	@GetMapping("/deputado/{dni}")
 	public ResponseEntity<String> recuperarDeputado(@PathVariable String dni){
 		Deputado deputado = pessoaService.exibirDeputado(dni);
-		return new ResponseEntity<String>(deputado.toString(), HttpStatus.FOUND);
+		return new ResponseEntity<String>(deputado.toString(), HttpStatus.OK);
 	}
 	
 }

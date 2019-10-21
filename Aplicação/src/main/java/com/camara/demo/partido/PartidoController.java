@@ -30,6 +30,6 @@ public class PartidoController {
 	
 	@GetMapping("/")
 	public ResponseEntity listarBase() {
-		return new ResponseEntity<String>(partidoService.listaPartidos(), HttpStatus.FOUND);
+		return new ResponseEntity<String>(partidoService.listaPartidos(), HttpStatus.OK);
 	}
 }
