@@ -56,28 +56,32 @@ Para mais detalhes: [Json Web Token](https://medium.com/tableless/entendendo-tok
 ## Desempenho
  Um sistema de memoria auxiliar cache, está sendo implementado para evitar o constante acesso a informações em requisições repetidas que nao sofreram alterações.
  
- 1. Ao realizar uma requisição pela primeira vez, essa é devolvida a resposta, e salva-se o objeto por um determinado tempo em uma memoria auxiliar.
+ 1. Realiza-se uma requisição.
+ 1. É entao realizada uma consulta/processamento
+ 1. É estabelecida uma tabela como uma memoria auxiliar  e salva-se o objeto por um determinado tempo.
+ 1. Retornada a resposta.
  1. Caso seja feita novamente a requisição, é conferido caso o dado nao tenha sido invalidado.
     * Caso nao, retorna-se imediatamente o dado armazenado no cache.
     * Caso sim, é feita uma nova consulta e armazena-se assim novamente o dado. 
   &nbsp;  
   &nbsp;  
   &nbsp;  
-* Gráfico de tempo de resposta pelo tempo entre uma rota com cache(Deputado/amarelo) e outra sem(Pessoa/azul).
+* Gráfico de tempo de resposta pelo tempo entre uma rota com cache(Deputado/amarelo) e outra sem(Pessoa/azul), Em média e percentil.
 ![comparação](https://uploaddeimagens.com.br/images/002/437/749/full/flotLatenciesOverTime.png?1571691521) 
 ![tt](https://uploaddeimagens.com.br/images/002/437/750/full/flotResponseTimesPercentiles.png?1571691539)  
 &nbsp;    
 &nbsp;   
 &nbsp;    
 &nbsp;    
-* Tempo de respostas
+* Tempo de respostas em ms para todas requisições feitas.
 ![tempo de respostas](https://uploaddeimagens.com.br/images/002/437/751/full/WhatsApp_Image_2019-10-21_at_17.45.23.jpeg?1571691552)  
 &nbsp;    
 &nbsp;    
 &nbsp;    
-* Taxa de vazão de dados de entrada(amarelo) e de saida(azul)
+* Taxa de vazão de dados de entrada(amarelo) e de saida(azul) em bytes.
 ![vazao](https://uploaddeimagens.com.br/images/002/437/748/full/flotBytesThroughputOverTime.png?1571691499)  
 &nbsp;  
 &nbsp;  
-Para a realização dos testes, utilizou-se da ferramenta [Jmeter](https://jmeter.apache.org/). Como configuração de ambiente, foram simuladas 500 usuarios(threads) com um atraso de 5 segundos para requisições.
+Para a realização dos testes, utilizou-se da ferramenta [Jmeter](https://jmeter.apache.org/).  
+Como configuração de ambiente, foram simuladas 500 usuarios(threads)sendo o limite, com um atraso de 5 segundos para requisições. Acima disso ocorrem erros de falha de conexão.
 
