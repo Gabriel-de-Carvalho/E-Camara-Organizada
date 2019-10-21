@@ -39,7 +39,7 @@ Baseada na arquitetura cliente-servidor de 3 camadas. nas quais:
 O sistema de autenticação, usado para garantir a proteção e acesso somente a usuarios autenticados as rotas apropriadas, se baseia em autenticação por token. 
 
 * Para cadastro, realizar um POST em `"/v1/auth/signup"`  
-    *Email, senha e nome são necessarios e nao devem ser nulos  
+    * Email, senha e nome são necessarios e nao devem ser nulos  
     
 Autenticação e fluxo de funcionamento:  
 1. Credenciais são passadas em um POST para: `"/v1/auth/signin"`.
