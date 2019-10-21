@@ -17,16 +17,20 @@ Primeiramente, Devemos clonar localmente esse repositorio para se poder executar
 Para isso, então, deve-se ter o git instalado na máquina, caso não o tenha siga esse tutorial para instalação usando sua plataforma como referência: [instalação do git](https://git-scm.com/book/pt-br/v1/Primeiros-passos-Instalando-Git.)  
 
 1. abra seu terminal.
-1. Clone o repositorio: 
+1. Clone o repositorio:
 ```console 
 user@:$ Git Clone https://github.com/Gabriel-de-Carvalho/E-Camara-Organizada.git
 ```
+1. Navegue até a pasta Aplicação:
+```console 
+user@:$ cd E-Camara-Organizada/Aplicação
+```
+1. Execute o comando para iniciar o programa:
+```console 
+user@:$ mvn spring-boot:run
+```
 
-Após Isso, abra então seu terminal, navegue até o local onde se deseja salvar localmente esse projeto. Quando estiver pronto, utilize o comando:
-> $ Git Clone https://github.com/Gabriel-de-Carvalho/E-Camara-Organizada.git  
-
-Uma vez criada a copia local, para executar, basta navegar, a partir do seu terminal,  para `E-Camara-Organizada/Aplicação`. Então execute o comando:
-> $ mvn spring-boot:run  
+## Arquitetura
 
 ## Autenticação
 
