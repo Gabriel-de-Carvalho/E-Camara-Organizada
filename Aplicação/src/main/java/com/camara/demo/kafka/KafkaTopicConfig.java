@@ -1,4 +1,4 @@
-package kafka;
+package com.camara.demo.kafka;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,12 +7,20 @@ import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.core.KafkaAdmin;
 
+@EnableKafka
+@Configuration
 public class KafkaTopicConfig {
 	
 	 @Value(value = "${kafka.bootstrapAddress}")
-	 public static String bootstrapAddress;
+	 public String bootstrapAddress;
+	 
+	 public String getBootStrap() {
+		 return this.bootstrapAddress;
+	 }
 	 
 	 @Bean
 	    public KafkaAdmin kafkaAdmin() {
@@ -23,14 +31,14 @@ public class KafkaTopicConfig {
 	 
 	 @Bean
 	    public NewTopic topic1() {
-	         return new NewTopic("ementa", 3, (short) 1);
+	         return new NewTopic("ementa", 1, (short) 1);
 	    }
 	 @Bean
 	    public NewTopic topic2() {
-	         return new NewTopic("lei", 3, (short) 1);
+	         return new NewTopic("lei", 1, (short) 1);
 	    }
 	 @Bean
 	    public NewTopic topic3() {
-	         return new NewTopic("complementar", 3, (short) 1);
+	         return new NewTopic("complementar", 1, (short) 1);
 	    }
 }
